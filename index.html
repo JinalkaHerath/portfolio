@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jinalka Herath — Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --teal: #00d4c8;
+    --teal2: #00faf0;
+    --amber: #f5a623;
+    --amber2: #ffbe4d;
+    --text: #c8d6e5;
+    --text2: #6b8ba4;
+    --border: rgba(0,212,200,0.12);
+    --glow: 0 0 24px rgba(0,212,200,0.25);
+    --font-head: 'Rajdhani', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRID OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,200,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,200,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,200,0.07) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .hero-bg-circle2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%);
+    bottom: 80px; left: 200px;
+    pointer-events: none;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(52px, 8vw, 108px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+
+  .hero h1 .line2 {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,212,200,0.5);
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    color: var(--text2);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--teal);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover {
+    background: var(--teal2);
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--teal);
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(0,212,200,0.35);
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-outline:hover {
+    border-color: var(--teal);
+    background: rgba(0,212,200,0.06);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+  }
+
+  .stat {
+    text-align: right;
+    border-right: 2px solid rgba(0,212,200,0.3);
+    padding-right: 20px;
+  }
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 60px;
+  }
+
+  .section-title span {
+    color: var(--teal);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--teal);
+    transition: height 0.3s;
+  }
+  .skill-card:hover {
+    border-color: rgba(0,212,200,0.35);
+    background: var(--bg3);
+    transform: translateY(-3px);
+    box-shadow: var(--glow);
+  }
+  .skill-card:hover::before { height: 100%; }
+
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .skill-name {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .skill-sub {
+    font-size: 12px;
+    color: var(--text2);
+    font-family: var(--font-mono);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--teal), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.5s forwards;
+  }
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 12px; height: 12px;
+    background: var(--teal);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,212,200,0.6);
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .timeline-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 1px;
+    background: rgba(0,212,200,0.08);
+    border: 1px solid rgba(0,212,200,0.2);
+    padding: 3px 10px;
+  }
+
+  .timeline-current {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: blink 2s infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .timeline-company {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-role {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--text2);
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .timeline-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 11px;
+    top: 3px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card.featured {
+    border-color: rgba(245,166,35,0.3);
+    background: linear-gradient(135deg, #0d1117, #12180f);
+  }
+
+  .project-card.featured::after {
+    content: 'FEATURED';
+    position: absolute;
+    top: 16px; right: -20px;
+    background: var(--amber);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 4px 28px;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,212,200,0.3);
+    box-shadow: var(--glow);
+  }
+
+  .project-card.featured:hover {
+    border-color: rgba(245,166,35,0.5);
+    box-shadow: 0 0 28px rgba(245,166,35,0.15);
+  }
+
+  .project-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  .project-title {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+
+  .project-desc ul {
+    list-style: none;
+    margin-top: 8px;
+  }
+  .project-desc ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  .project-desc ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 10px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--teal);
+    background: rgba(0,212,200,0.07);
+    border: 1px solid rgba(0,212,200,0.18);
+    padding: 3px 10px;
+    letter-spacing: 1px;
+  }
+
+  .tag.amber {
+    color: var(--amber);
+    background: rgba(245,166,35,0.07);
+    border-color: rgba(245,166,35,0.2);
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .edu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+    transition: all 0.3s;
+  }
+  .edu-card:hover {
+    border-color: rgba(0,212,200,0.3);
+    transform: translateY(-2px);
+  }
+
+  .edu-degree {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .edu-institution {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .edu-meta {
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  .edu-level {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber);
+    border: 1px solid rgba(245,166,35,0.25);
+    padding: 3px 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* CERTIFICATIONS */
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 18px 24px;
+    transition: all 0.2s;
+  }
+  .cert-item:hover {
+    border-color: rgba(0,212,200,0.3);
+    background: var(--bg3);
+  }
+
+  .cert-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .cert-issuer {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text2);
+    letter-spacing: 1px;
+  }
+
+  /* RECOMMENDATIONS */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .rec-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .rec-card::before {
+    content: '"';
+    position: absolute;
+    top: 16px; right: 24px;
+    font-family: Georgia, serif;
+    font-size: 72px;
+    color: rgba(0,212,200,0.1);
+    line-height: 1;
+  }
+  .rec-card:hover {
+    border-color: rgba(0,212,200,0.25);
+    transform: translateY(-3px);
+    box-shadow: var(--glow);
+  }
+
+  .rec-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .rec-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rec-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), rgba(0,212,200,0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .rec-name {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .rec-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 1px;
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 18px 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .contact-item:hover {
+    border-color: rgba(0,212,200,0.35);
+    color: var(--teal);
+    transform: translateX(4px);
+  }
+
+  .contact-item-icon { font-size: 20px; }
+  .contact-item-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .contact-item-val {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .languages-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+  .lang-title {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-name {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .lang-level {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+  }
+
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: 1px;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero, section { padding-left: 20px; padding-right: 20px; }
+    .hero-stats { display: none; }
+    .edu-grid, .rec-grid, .contact-wrapper { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">JH_PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+
+  <p class="hero-tag">// Mechatronics Engineer · Sri Lanka</p>
+  <h1>
+    Jinalka
+    <span class="line2">Herath</span>
+  </h1>
+  <p class="hero-desc">
+    Autonomous systems engineer specializing in robotics, drone navigation, computer vision, and embedded systems. Building intelligent machines that perceive, decide, and act.
+  </p>
+
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Exp</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">95%+</div>
+      <div class="stat-label">Positioning Accuracy</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT / SKILLS -->
+<section id="about">
+  <p class="section-label">01 — About</p>
+  <h2 class="section-title">Core <span>Competencies</span></h2>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">Robotics & Autonomous Systems</div>
+      <div class="skill-sub">ROS2 · Webots · MAVLink</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">👁️</div>
+      <div class="skill-name">Computer Vision</div>
+      <div class="skill-sub">OpenCV · Image Processing · SLAM</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🚁</div>
+      <div class="skill-name">Drone Navigation</div>
+      <div class="skill-sub">Pixhawk · UWB · Tello SDK</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💡</div>
+      <div class="skill-name">Embedded Systems</div>
+      <div class="skill-sub">ESP8266 · PIC18 · Raspberry Pi</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔬</div>
+      <div class="skill-name">Simulation & Modelling</div>
+      <div class="skill-sub">MATLAB · Simulink · A* Planning</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">IoT & Circuit Design</div>
+      <div class="skill-sub">DHT11 · PLC · CAD Fabrication</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💾</div>
+      <div class="skill-name">Programming</div>
+      <div class="skill-sub">Python · C · SQL · MySQL</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Languages</div>
+      <div class="skill-sub">Sinhala · English · German · French</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">02 — Experience</p>
+  <h2 class="section-title">Work <span>History</span></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-period">Oct 2025 – Present</span>
+        <span class="timeline-current">● CURRENT</span>
+      </div>
+      <div class="timeline-company">Robotzu · Colombo, Sri Lanka</div>
+      <div class="timeline-role">Electronics Engineer</div>
+      <ul class="timeline-bullets">
+        <li>Designing and developing electronic systems for robotic applications</li>
+        <li>Working on embedded systems integration and circuit design</li>
+        <li>Collaborating on innovative robotics projects and product development</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-period">Jan 2024 – Sep 2025</span>
+      </div>
+      <div class="timeline-company">IDEA8 · Kottawa, Sri Lanka</div>
+      <div class="timeline-role">Research & Development Officer</div>
+      <ul class="timeline-bullets">
+        <li>Contributed to innovative product development in robotics and automation</li>
+        <li>Led development of autonomous drone navigation systems</li>
+        <li>Implemented computer vision solutions for human detection and tracking</li>
+        <li>Participated in prototype development and testing of robotics systems</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-period">Dec 2019 – Jul 2020</span>
+      </div>
+      <div class="timeline-company">LB Finance · Kiribathgoda, Sri Lanka</div>
+      <div class="timeline-role">Marketing Officer</div>
+      <ul class="timeline-bullets">
+        <li>Assisted clients with financial products and services</li>
+        <li>Maintained excellent client communication and negotiation</li>
+        <li>Built strong relationships with customers and stakeholders</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">03 — Projects</p>
+  <h2 class="section-title">Engineering <span>Work</span></h2>
+  <div class="projects-grid reveal">
+
+    <!-- FEATURED PROJECT -->
+    <div class="project-card featured" style="grid-column: 1 / -1;">
+      <div class="project-num">Project 01 · Research</div>
+      <div class="project-title">Indoor Warehouse Drone Navigation & Inventory Management System</div>
+      <div class="project-desc">
+        Designed and developed a complete autonomous drone system for GNSS-denied indoor environments, achieving high-precision localization and real-time inventory automation.
+        <ul>
+          <li>Implemented UWB-based localization using trilateration with Kalman filtering for noise reduction</li>
+          <li>Achieved >95% positioning accuracy in indoor GNSS-denied environments</li>
+          <li>Developed QR-based inventory tracking integrated with MySQL database (~98% detection accuracy)</li>
+          <li>Designed and tested quadcopter prototype with ~800g payload capacity</li>
+          <li>Conducted MATLAB/Simulink simulations for flight dynamics, payload optimization, and system validation</li>
+          <li>Engineered full pipeline: localization → perception → control → data system</li>
+        </ul>
+      </div>
+      <div class="project-tags">
+        <span class="tag amber">UWB Localization</span>
+        <span class="tag amber">MATLAB / Simulink</span>
+        <span class="tag amber">OpenCV</span>
+        <span class="tag amber">MySQL</span>
+        <span class="tag amber">Embedded Systems</span>
+        <span class="tag amber">Kalman Filter</span>
+        <span class="tag amber">QR Detection</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 02</div>
+      <div class="project-title">Autonomous Duckiebot</div>
+      <div class="project-desc">Autonomous robot using Raspberry Pi 3+ and OpenCV for lane following, camera-based navigation, and traffic rule compliance within a miniature city environment.</div>
+      <div class="project-tags">
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Image Processing</span>
+        <span class="tag">Camera Calibration</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 03</div>
+      <div class="project-title">Autonomous Drone — Circle Detection Navigation</div>
+      <div class="project-desc">Navigation system using Tello drone and OpenCV. Drone detects circular obstacles via Hough Circle Transform and autonomously aligns and maneuvers through them using image-based control logic.</div>
+      <div class="project-tags">
+        <span class="tag">Tello SDK</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Hough Transform</span>
+        <span class="tag">Control Logic</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 04</div>
+      <div class="project-title">Custom Drone — Human Detection & Tracking</div>
+      <div class="project-desc">Custom Pixhawk–Raspberry Pi drone capable of real-time human detection and tracking using OpenCV and MAVLink communication for search & rescue and surveillance applications.</div>
+      <div class="project-tags">
+        <span class="tag">Pixhawk</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">MAVLink</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Human Detection</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 05</div>
+      <div class="project-title">Autonomous Vehicle Simulation (Webots + ROS2)</div>
+      <div class="project-desc">Simulated autonomous construction robot in Webots with ROS2 Humble integration. Implemented LiDAR and camera-based SLAM, A* path planning, and cost-map navigation.</div>
+      <div class="project-tags">
+        <span class="tag">Webots</span>
+        <span class="tag">ROS2</span>
+        <span class="tag">SLAM</span>
+        <span class="tag">LiDAR</span>
+        <span class="tag">A* Planning</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 06</div>
+      <div class="project-title">IoT Automated Coconut Stove Cooker</div>
+      <div class="project-desc">IoT-based automatic fan control system for coconut stoves using DHT11 and ESP8266. Dynamically adjusts fan speed based on temperature with manual Wi-Fi override for improved energy efficiency and safety.</div>
+      <div class="project-tags">
+        <span class="tag">ESP8266</span>
+        <span class="tag">DHT11</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Wi-Fi Control</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">Project 07</div>
+      <div class="project-title">Seven Segment Digital Clock</div>
+      <div class="project-desc">Digital clock using PIC18F4520 microcontroller and seven-segment displays. Implemented segment control through ULN2803A drivers for low-level embedded system interfacing.</div>
+      <div class="project-tags">
+        <span class="tag">PIC18F4520</span>
+        <span class="tag">Embedded C</span>
+        <span class="tag">ULN2803A</span>
+        <span class="tag">Hardware Design</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">04 — Education</p>
+  <h2 class="section-title">Academic <span>Background</span></h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">BSc (Hons) in Mechatronics Engineering</div>
+      <div class="edu-institution">CINEC Campus · Malabe</div>
+      <div class="edu-meta">Jul 2021 – Aug 2025 · Sri Lanka</div>
+      <span class="edu-level">EQF Level 6</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Diploma in Mechanical Engineering</div>
+      <div class="edu-institution">City & Guilds · Maradana</div>
+      <div class="edu-meta">Jan 2022 – Jan 2023 · Sri Lanka</div>
+      <span class="edu-level">EQF Level 4</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <p class="section-label">05 — Certifications</p>
+  <h2 class="section-title">Professional <span>Credentials</span></h2>
+  <div class="certs-list reveal">
+    <div class="cert-item">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">Programmable Logic Circuit</div>
+        <div class="cert-issuer">Ceylon German Technical Training Institute · Nov 2023</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🔧</div>
+      <div>
+        <div class="cert-name">PLC Programming</div>
+        <div class="cert-issuer">SLIR · Jun 2024</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🏗️</div>
+      <div>
+        <div class="cert-name">Aluminum Fabrication Technician</div>
+        <div class="cert-issuer">CINEC Campus · Oct 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RECOMMENDATIONS -->
+<section>
+  <p class="section-label">06 — Recommendations</p>
+  <h2 class="section-title"><span>Recommendations</span></h2>
+  <div class="rec-grid reveal">
+    <div class="rec-card">
+      <div class="rec-person" style="margin-bottom:20px;">
+        <div class="rec-avatar">DM</div>
+        <div>
+          <div class="rec-name">Ms. Dushani Munasinghe</div>
+          <div class="rec-role">Lecturer, Electronic & Telecommunication Engineering · CINEC Campus</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="mailto:dushani.munasinghe@cinec.edu" class="contact-item" style="padding:12px 16px;">
+          <div class="contact-item-icon" style="font-size:16px;">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val" style="font-size:14px;">dushani.munasinghe@cinec.edu</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-person" style="margin-bottom:20px;">
+        <div class="rec-avatar">GS</div>
+        <div>
+          <div class="rec-name">Dr. Geethal C. Siriwardana</div>
+          <div class="rec-role">Senior Lecturer, Mechanical Engineering · University of Sri Jayewardenepura</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="mailto:geethal@sjp.ac.lk" class="contact-item" style="padding:12px 16px;">
+          <div class="contact-item-icon" style="font-size:16px;">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val" style="font-size:14px;">geethal@sjp.ac.lk</div>
+          </div>
+        </a>
+        <a href="tel:+94778802407" class="contact-item" style="padding:12px 16px;">
+          <div class="contact-item-icon" style="font-size:16px;">📱</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val" style="font-size:14px;">+94 77 880 2407</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">07 — Contact</p>
+  <h2 class="section-title">Get In <span>Touch</span></h2>
+  <div class="contact-wrapper reveal">
+    <div class="contact-info">
+      <a href="mailto:jinalkaherath@gmail.com" class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val">jinalkaherath@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+94768306862" class="contact-item">
+        <div class="contact-item-icon">📱</div>
+        <div>
+          <div class="contact-item-label">Phone / WhatsApp</div>
+          <div class="contact-item-val">+94 768 306 862</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/jinalka-herath-85a6531a4/" target="_blank" class="contact-item">
+        <div class="contact-item-icon">💼</div>
+        <div>
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-val">Jinalka Herath</div>
+        </div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-val">Gampaha, Sri Lanka</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="languages-block">
+      <div class="lang-title">Language Proficiency</div>
+      <div class="lang-item">
+        <span class="lang-name">Sinhala</span>
+        <span class="lang-level">NATIVE</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">PROFESSIONAL</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">German</span>
+        <span class="lang-level">WORKING</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">French</span>
+        <span class="lang-level">WORKING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">© 2025 Jinalka Herath — Mechatronics Engineer</p>
+  <div class="footer-links">
+    <a href="mailto:jinalkaherath@gmail.com">Email</a>
+<a href="https://www.linkedin.com/in/jinalka-herath-85a6531a4/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+    });
+  });
+</script>
+</body>
+</html>
